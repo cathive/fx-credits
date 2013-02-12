@@ -18,11 +18,13 @@ package com.cathive.fx.credits;
 
 import java.net.URL;
 
+import javafx.util.Builder;
+
 /**
  * @see Component
  * @author Benjamin P. Jung
  */
-public final class ComponentBuilder {
+public final class ComponentBuilder implements Builder<Component> {
 
     private String id;
     private String name;
@@ -38,6 +40,7 @@ public final class ComponentBuilder {
         return new ComponentBuilder();
     }
 
+    @Override
     public Component build() {
         final Component component = new Component();
         component.setId(id);

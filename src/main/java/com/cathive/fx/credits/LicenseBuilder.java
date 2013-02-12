@@ -18,11 +18,13 @@ package com.cathive.fx.credits;
 
 import java.net.URL;
 
+import javafx.util.Builder;
+
 /**
  * 
  * @author Benjamin P. Jung
  */
-public final class LicenseBuilder {
+public final class LicenseBuilder implements Builder<License> {
 
     private String id;
     private String name;
@@ -36,6 +38,7 @@ public final class LicenseBuilder {
         return new LicenseBuilder();
     }
 
+    @Override
     public License build() {
         final License license = new License();
         license.setId(id);

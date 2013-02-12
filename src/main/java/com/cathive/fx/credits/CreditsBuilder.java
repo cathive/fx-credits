@@ -21,12 +21,13 @@ import java.util.Collections;
 import java.util.List;
 
 import javafx.collections.FXCollections;
+import javafx.util.Builder;
 
 /**
  * @see Credits
  * @author Benjamin P. Jung
  */
-public final class CreditsBuilder {
+public final class CreditsBuilder implements Builder<Credits> {
 
     private List<Component> components;
 
@@ -49,6 +50,7 @@ public final class CreditsBuilder {
         return this;
     }
 
+    @Override
     public Credits build() {
         final Credits credits = new Credits();
         if (components != null) {
