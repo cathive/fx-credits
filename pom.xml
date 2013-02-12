@@ -36,6 +36,7 @@
 
   <properties>
     <javafx.runtime.jar>${java.home}/lib/jfxrt.jar</javafx.runtime.jar>
+    <netbeans.hint.jdkPlatform>JDK_1.7</netbeans.hint.jdkPlatform>
   </properties>
 
   <prerequisites>
@@ -228,7 +229,7 @@
       <dependency>
         <groupId>com.google.inject</groupId>
         <artifactId>guice</artifactId>
-        <version>[3.0,)</version>
+        <version>3.0</version>
       </dependency>
       <dependency>
         <groupId>org.testng</groupId>
