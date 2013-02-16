@@ -11,6 +11,6 @@ in your Maven based projects just add the following lines to your
 <dependency>
   <groupId>com.cathive.fx</groupId>
   <artifactId>fx-credits</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 </dependency>
 ```
