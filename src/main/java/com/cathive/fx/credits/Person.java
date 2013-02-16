@@ -20,40 +20,32 @@ import java.io.Serializable;
 import java.net.URL;
 import java.util.Objects;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
-
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlID;
 import javax.xml.bind.annotation.XmlType;
 
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 /**
- * Any kind of component, e.g. a texture pack, a 3rd party library or whatever.
- * 
+ * Represents a single person
  * @author Benjamin P. Jung
  */
-@XmlType(name = "component", namespace = "http://www.cathive.com/fx/credits/", propOrder = {
-    "id", "name", "description", "url", "license"
+@XmlType(name = "person", namespace = "http://www.cathive.com/fx/credits/", propOrder = {
+        "id", "name", "email", "url"
 })
-public final class Component implements Serializable {
+public final class Person implements Serializable {
 
     /** @see java.io.Serializable */
-    private static final long serialVersionUID = 8632971694384502658L;
+    private static final long serialVersionUID = 453270492070378204L;
 
     private final StringProperty id = new SimpleStringProperty();
     private final StringProperty name = new SimpleStringProperty();
-    private final StringProperty description = new SimpleStringProperty();
+    private final StringProperty email = new SimpleStringProperty();
     private final ObjectProperty<URL> url = new SimpleObjectProperty<>();
-    private final ObjectProperty<License> license = new SimpleObjectProperty<>();
-
-
-    public Component() {
-        super();
-    }
-
 
     @XmlID
     @XmlAttribute(name="id")
@@ -69,7 +61,7 @@ public final class Component implements Serializable {
         return this.id;
     }
 
-    @XmlElement(name = "name", nillable = false, required = true)
+    @XmlElement(name = "name", required = true)
     public String getName() {
         return this.name.get();
     }
@@ -82,17 +74,17 @@ public final class Component implements Serializable {
         return this.name;
     }
 
-    @XmlElement(name = "description", nillable = true, required = false)
-    public String getDescription() {
-        return this.description.get();
+    @XmlElement(name = "email", required = false)
+    public String getEmail() {
+        return this.email.get();
     }
 
-    public void setDescription(final String description) {
-        this.description.set(description);
+    public void setEmail(final String email) {
+        this.email.set(email);
     }
 
-    public StringProperty descriptionProperty() {
-        return this.description;
+    public StringProperty emailProperty() {
+        return this.email;
     }
 
     @XmlElement(name = "url", required = false)
@@ -108,17 +100,15 @@ public final class Component implements Serializable {
         return this.url;
     }
 
-    @XmlElement(name = "license", required = false)
-    public License getLicense() {
-        return this.license.get();
-    }
-
-    public void setLicense(final License license) {
-        this.license.set(license);
-    }
-
-    public ObjectProperty<License> licenseProperty() {
-        return this.license;
+    @Override
+    public String toString() {
+        final String name = getName();
+        final String email = getEmail();
+        if (email == null) {
+            return name;
+        } else {
+            return String.format("%s <%s>", name, email);
+        }
     }
 
     @Override
@@ -129,17 +119,16 @@ public final class Component implements Serializable {
         if (getClass() != o.getClass()) {
            return false;
         }
-        final Component that = (Component) o;
+        final Person that = (Person) o;
         return Objects.equals(this.getId(), that.getId())
             && Objects.equals(this.getName(), that.getName())
-            && Objects.equals(this.getDescription(), that.getDescription())
-            && Objects.equals(this.getUrl(), that.getUrl())
-            && Objects.equals(this.getLicense(), that.getLicense());
+            && Objects.equals(this.getEmail(), that.getEmail())
+            && Objects.equals(this.getUrl(), that.getUrl());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getId(), this.getName(), this.getDescription(), this.getUrl(), this.getLicense());
+        return Objects.hash(this.getId(), this.getName(), this.getEmail(), this.getUrl());
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Cat Hive Developers.
+ * Copyright (C) 2013 The Cat Hive Developers.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,14 +37,16 @@ import javax.xml.bind.annotation.XmlType;
  * @author Benjamin P. Jung
  */
 @XmlType(name = "credits", namespace = "http://www.cathive.com/fx/credits/", propOrder = {
-    "components_JAXB"
+    "persons_JAXB", "sections_JAXB", "components_JAXB"
 })
 @XmlRootElement(name = "credits", namespace = "http://www.cathive.com/fx/credits/")
 public final class Credits implements Serializable {
 
     /** @see java.io.Serializable */
-    private static final long serialVersionUID = 4420652488345252112L;
+    private static final long serialVersionUID = -915584345771184673L;
 
+    private final ListProperty<Person> persons = new SimpleListProperty<>(FXCollections.observableList(new ArrayList<Person>()));
+    private final ListProperty<Section> sections = new SimpleListProperty<>(FXCollections.observableList(new ArrayList<Section>()));
     private final ListProperty<Component> components = new SimpleListProperty<>(FXCollections.observableList(new ArrayList<Component>()));
 
 
@@ -52,6 +54,56 @@ public final class Credits implements Serializable {
         super();
     }
 
+
+    @XmlTransient
+    public ObservableList<Person> getPersons() {
+        return this.persons.get();
+    }
+
+    public void setPersons(final ObservableList<Person> persons) {
+        this.persons.set(persons);
+    }
+
+    public ObservableList<Person> personsProperty() {
+        return this.persons;
+    }
+
+    /** Helper method for JAXB XML deserialization */
+    @XmlElement(name = "person")
+    @XmlElementWrapper(name = "persons")
+    protected List<Person> getPersons_JAXB() {
+        return this.persons.get();
+    }
+
+    /** Helper method for JAXB XML serialization */
+    protected void setPersons_JAXB(final List<Person> persons) {
+        this.persons.set(FXCollections.observableList(persons));
+    }
+
+    @XmlTransient
+    public ObservableList<Section> getSections() {
+        return this.sections.get();
+    }
+
+    public void setSections(final ObservableList<Section> sections) {
+        this.sections.set(sections);
+    }
+
+    public ListProperty<Section> sectionsProperty() {
+        return this.sections;
+    }
+
+    /** Helper method for JAXB XML deserialization */
+    @XmlElement(name = "section")
+    @XmlElementWrapper(name = "sections")
+    protected List<Section> getSections_JAXB() {
+        return this.sections.get();
+    }
+
+    /** Helper method for JAXB XML serialization */
+    protected void setSections_JAXB(final List<Section> sections) {
+        this.sections.set(FXCollections.observableList(sections));
+    }
 
     @XmlTransient
     public ObservableList<Component> getComponents() {
@@ -87,12 +139,14 @@ public final class Credits implements Serializable {
            return false;
         }
         final Credits that = (Credits) o;
-        return Objects.deepEquals(this.getComponents(), that.getComponents());
+        return Objects.deepEquals(this.getPersons(), that.getPersons())
+            && Objects.deepEquals(this.getSections(), that.getSections())
+            && Objects.deepEquals(this.getComponents(), that.getComponents());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(this.getComponents());
+        return Objects.hash(this.getPersons(), this.getSections(), this.getComponents());
     }
 
 }

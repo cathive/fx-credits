@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2012 The Cat Hive Developers.
+ * Copyright (C) 2013 The Cat Hive Developers.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,8 @@
 
 package com.cathive.fx.credits;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.util.Builder;
 
 /**
@@ -29,7 +26,9 @@ import javafx.util.Builder;
  */
 public final class CreditsBuilder implements Builder<Credits> {
 
-    private List<Component> components;
+    private ObservableList<Person> persons;
+    private ObservableList<Section> sections;
+    private ObservableList<Component> components;
 
     private CreditsBuilder() {
         super();
@@ -39,23 +38,42 @@ public final class CreditsBuilder implements Builder<Credits> {
         return new CreditsBuilder();
     }
 
-    public CreditsBuilder components(List<Component> components) {
+    public CreditsBuilder persons(ObservableList<Person> persons) {
+        this.persons = persons;
+        return this;
+    }
+
+    public CreditsBuilder persons(Person... persons) {
+        this.persons = FXCollections.observableArrayList(persons);
+        return this;
+    }
+
+    public CreditsBuilder sections(ObservableList<Section> sections) {
+        this.sections = sections;
+        return this;
+    }
+
+    public CreditsBuilder sections(Section... sections) {
+        this.sections = FXCollections.observableArrayList(sections);
+        return this;
+    }
+
+    public CreditsBuilder components(ObservableList<Component> components) {
         this.components = components;
         return this;
     }
 
-    public CreditsBuilder components(Component ... components) {
-        this.components = new ArrayList<Component>();
-        Collections.addAll(this.components, components);
+    public CreditsBuilder components(Component... components) {
+        this.components = FXCollections.observableArrayList(components);
         return this;
     }
 
     @Override
     public Credits build() {
         final Credits credits = new Credits();
-        if (components != null) {
-            credits.setComponents(FXCollections.observableList(components));
-        }
+        credits.setPersons(persons);
+        credits.setSections(sections);
+        credits.setComponents(components);
         return credits;
     }
 

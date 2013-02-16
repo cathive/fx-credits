@@ -16,49 +16,54 @@
 
 package com.cathive.fx.credits;
 
-import java.net.URL;
-
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.util.Builder;
 
 /**
  * 
  * @author Benjamin P. Jung
  */
-public final class LicenseBuilder implements Builder<License> {
+public final class SectionBuilder implements Builder<Section> {
 
     private String id;
     private String name;
-    private URL url;
+    private ObservableList<Person> persons;
 
-    private LicenseBuilder() {
+    private SectionBuilder() {
         super();
     }
 
-    public LicenseBuilder create() {
-        return new LicenseBuilder();
+    public static SectionBuilder create() {
+        return new SectionBuilder();
     }
 
     @Override
-    public License build() {
-        final License license = new License();
-        license.setId(id);
-        license.setName(name);
-        license.setUrl(url);
-        return license;
+    public Section build() {
+        final Section section = new Section();
+        section.setId(id);
+        section.setName(name);
+        section.setPersons(persons);
+        return section;
     }
 
-    public LicenseBuilder id(final String id) {
+    public SectionBuilder id(final String id) {
         this.id = id;
         return this;
     }
 
-    public LicenseBuilder name(final String name) {
+    public SectionBuilder name(final String name) {
         this.name = name;
         return this;
     }
 
-    public LicenseBuilder url(final URL url) {
-        this.url = url;
+    public SectionBuilder persons(final ObservableList<Person> persons) {
+        this.persons = persons;
+        return this;
+    }
+
+    public SectionBuilder persons(final Person... persons) {
+        this.persons = FXCollections.observableArrayList(persons);
         return this;
     }
 

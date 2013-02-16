@@ -21,58 +21,52 @@ import java.net.URL;
 import javafx.util.Builder;
 
 /**
- * @see Component
+ * @see Person
  * @author Benjamin P. Jung
  */
-public final class ComponentBuilder implements Builder<Component> {
+public final class PersonBuilder implements Builder<Person> {
 
     private String id;
     private String name;
-    private String description;
+    private String email;
     private URL url;
-    private License license;
 
-    private ComponentBuilder() {
+    private PersonBuilder() {
         super();
     }
 
-    public static ComponentBuilder create() {
-        return new ComponentBuilder();
+    public static PersonBuilder create() {
+        return new PersonBuilder();
     }
 
     @Override
-    public Component build() {
-        final Component component = new Component();
-        component.setId(id);
-        component.setName(name);
-        component.setDescription(description);
-        component.setUrl(url);
-        component.setLicense(license);
-        return component;
+    public Person build() {
+        final Person person = new Person();
+        person.setId(id);
+        person.setName(name);
+        person.setEmail(email);
+        person.setUrl(url);
+        return person;
     }
 
-    public ComponentBuilder id(final String id) {
+    public PersonBuilder id(final String id) {
         this.id = id;
         return this;
     }
 
-    public ComponentBuilder name(final String name) {
+    public PersonBuilder name(final String name) {
         this.name = name;
         return this;
     }
 
-    public ComponentBuilder description(final String description) {
-        this.description = description;
+    public PersonBuilder email(final String email) {
+        this.email = email;
         return this;
     }
 
-    public ComponentBuilder url(final URL url) {
+    public PersonBuilder url(final URL url) {
         this.url = url;
         return this;
     }
 
-    public ComponentBuilder license(final License license) {
-        this.license = license;
-        return this;
-    }
 }
