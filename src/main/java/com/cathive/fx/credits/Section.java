@@ -40,7 +40,7 @@ import javafx.collections.ObservableList;
  * 
  * @author Benjamin P. Jung
  */
-@XmlType(name = "author", namespace = "http://www.cathive.com/fx/credits/", propOrder = {
+@XmlType(name = "section", namespace = "http://www.cathive.com/fx/credits/", propOrder = {
         "id", "name", "persons_JAXB"
 })
 public final class Section implements Serializable {
