@@ -121,6 +121,8 @@
                 <include>com/cathive/fx/credits/Component.java</include>
                 <include>com/cathive/fx/credits/Credits.java</include>
                 <include>com/cathive/fx/credits/License.java</include>
+                <include>com/cathive/fx/credits/Person.java</include>
+                <include>com/cathive/fx/credits/Section.java</include>
               </includes>
               <transformSchemas>
                 <transformSchema>
