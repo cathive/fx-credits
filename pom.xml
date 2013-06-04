@@ -19,6 +19,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.cathive</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>1</version>
+  </parent>
   <groupId>com.cathive.fx</groupId>
   <artifactId>fx-credits</artifactId>
   <packaging>jar</packaging>
@@ -28,16 +33,6 @@
   <url>http://www.cathive.com/</url>
   <inceptionYear>2013</inceptionYear>
 
-  <parent>
-    <groupId>org.sonatype.oss</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>7</version>
-  </parent>
-
-  <properties>
-    <javafx.runtime.jar>${java.home}/lib/jfxrt.jar</javafx.runtime.jar>
-    <netbeans.hint.jdkPlatform>JDK_1.7</netbeans.hint.jdkPlatform>
-  </properties>
 
   <prerequisites>
     <maven>3.0.0</maven>
@@ -66,12 +61,12 @@
     <developer>
       <id>headcr4sh</id>
       <name>Benjamin P. Jung</name>
-      <email>headcr4sh@googlemail.com</email>
+      <email>headcr4sh@gmail.com</email>
       <url>http://profiles.google.com/headcr4sh</url>
       <timezone>Europe/Berlin</timezone>
       <properties />
       <roles>
-        <role>Lead Developer</role>
+        <role>Developer</role>
       </roles>
     </developer>
   </developers>
@@ -138,72 +133,6 @@
     <pluginManagement>
       <plugins>
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.0</version>
-          <configuration>
-            <compilerId>javac</compilerId>
-            <compilerVersion>1.7</compilerVersion>
-            <encoding>UTF-8</encoding>
-            <showDeprecation>true</showDeprecation>
-            <showWarnings>true</showWarnings>
-            <source>1.7</source>
-            <target>1.7</target>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-jar-plugin</artifactId>
-          <version>2.4</version>
-          <configuration>
-            <archive>
-              <index>true</index>
-              <manifest>
-                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
-              </manifest>
-            </archive>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>2.9</version>
-          <executions>
-            <execution>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-resources-plugin</artifactId>
-          <version>2.6</version>
-          <configuration>
-            <encoding>UTF-8</encoding>
-          </configuration>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-source-plugin</artifactId>
-          <version>2.2.1</version>
-          <configuration>
-            <attach>true</attach>
-            <excludeResources>false</excludeResources>
-            <includePom>true</includePom>
-            <useDefaultExcludes>true</useDefaultExcludes>
-          </configuration>
-          <executions>
-            <execution>
-              <goals>
-                <goal>jar</goal>
-              </goals>
-            </execution>
-          </executions>
-        </plugin>
-        <plugin>
           <groupId>org.codehaus.mojo</groupId>
           <artifactId>jaxb2-maven-plugin</artifactId>
           <version>1.5</version>
@@ -229,65 +158,5 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-
-  <profiles>
-    <profile>
-      <id>javafx</id>
-      <activation>
-        <property>
-          <name>!skip-javafx-profile</name>
-        </property>
-      </activation>
-      <dependencies>
-        <dependency>
-          <groupId>com.oracle</groupId>
-          <artifactId>javafx-runtime</artifactId>
-          <version>RELEASE</version>
-          <scope>system</scope>
-          <systemPath>${javafx.runtime.jar}</systemPath>
-        </dependency>
-      </dependencies>
-    </profile>
-    <profile>
-      <id>m2e</id>
-      <activation>
-        <property>
-          <name>m2e.version</name>
-        </property>
-      </activation>
-      <build>
-        <pluginManagement>
-          <plugins>
-            <plugin>
-              <groupId>org.eclipse.m2e</groupId>
-              <artifactId>lifecycle-mapping</artifactId>
-              <version>1.0.0</version>
-              <configuration>
-                <lifecycleMappingMetadata>
-                  <pluginExecutions>
-                    <pluginExecution>
-                      <pluginExecutionFilter>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-enforcer-plugin</artifactId>
-                        <versionRange>[1.0,)</versionRange>
-                        <goals>
-                          <goal>enforce</goal>
-                        </goals>
-                      </pluginExecutionFilter>
-                      <action>
-                        <execute>
-                          <runOnIncremental>false</runOnIncremental>
-                        </execute>
-                      </action>
-                    </pluginExecution>
-                  </pluginExecutions>
-                </lifecycleMappingMetadata>
-              </configuration>
-            </plugin>
-          </plugins>
-        </pluginManagement>
-      </build>
-    </profile>
-  </profiles>
 
 </project>
