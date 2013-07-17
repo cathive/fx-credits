@@ -16,147 +16,155 @@
  limitations under the License.
  -->
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>com.cathive</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>2</version>
-  </parent>
-  <groupId>com.cathive.fx</groupId>
-  <artifactId>fx-credits</artifactId>
-  <packaging>jar</packaging>
-  <version>1.1.1-SNAPSHOT</version>
-  <name>CathiveFX Credits Library</name>
-  <description>Classes, utilities and XML bindings to help you give proper credits in to contributors and 3rd party libraries in your applications.</description>
-  <url>http://www.cathive.com/</url>
-  <inceptionYear>2013</inceptionYear>
-
-
-  <prerequisites>
-    <maven>3.0.0</maven>
-  </prerequisites>
-
-  <licenses>
-    <license>
-      <name>Apache License, Version 2.0</name>
-      <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-      <distribution>repo</distribution>
-      <comments />
-    </license>
-  </licenses>
-
-  <organization>
-    <name>The Cat Hive Developers</name>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.cathive</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>2</version>
+    </parent>
+    <groupId>com.cathive.fx</groupId>
+    <artifactId>fx-credits</artifactId>
+    <packaging>jar</packaging>
+    <version>1.1.1-SNAPSHOT</version>
+    <name>CathiveFX Credits Library</name>
+    <description>Classes, utilities and XML bindings to help you give proper credits in to contributors and 3rd party
+        libraries in your applications.
+    </description>
     <url>http://www.cathive.com/</url>
-  </organization>
+    <inceptionYear>2013</inceptionYear>
 
-  <issueManagement>
-    <system>github</system>
-    <url>https://github.com/cathive/fx-credits/issues</url>
-  </issueManagement>
 
-  <developers>
-    <developer>
-      <id>headcr4sh</id>
-      <name>Benjamin P. Jung</name>
-      <email>headcr4sh@gmail.com</email>
-      <url>http://profiles.google.com/headcr4sh</url>
-      <timezone>Europe/Berlin</timezone>
-      <properties />
-      <roles>
-        <role>Developer</role>
-      </roles>
-    </developer>
-  </developers>
+    <prerequisites>
+        <maven>3.0.0</maven>
+    </prerequisites>
 
-  <contributors />
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
+            <comments/>
+        </license>
+    </licenses>
 
-  <scm>
-    <connection>scm:git:https://github.com/cathive/fx-credits.git</connection>
-    <developerConnection>scm:git:git@github.com:cathive/fx-credits.git</developerConnection>
-    <tag>master</tag>
-    <url>https://github.com/cathive/fx-credits/</url>
-  </scm>
+    <organization>
+        <name>The Cat Hive Developers</name>
+        <url>http://www.cathive.com/</url>
+    </organization>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-resources-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-source-plugin</artifactId>
-      </plugin>
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>jaxb2-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>schemagen</goal>
-            </goals>
-            <phase>generate-resources</phase>
-            <configuration>
-              <includes>
-                <include>com/cathive/fx/credits/Component.java</include>
-                <include>com/cathive/fx/credits/Credits.java</include>
-                <include>com/cathive/fx/credits/License.java</include>
-                <include>com/cathive/fx/credits/Person.java</include>
-                <include>com/cathive/fx/credits/Section.java</include>
-              </includes>
-              <transformSchemas>
-                <transformSchema>
-                  <uri>http://www.cathive.com/fx/credits/</uri>
-                  <toFile>fx-credits.xsd</toFile>
-                </transformSchema>
-              </transformSchemas>
-            </configuration>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-    <pluginManagement>
-      <plugins>
-        <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>jaxb2-maven-plugin</artifactId>
-          <version>1.5</version>
-        </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+    <issueManagement>
+        <system>GitHub</system>
+        <url>https://github.com/cathive/fx-credits/issues</url>
+    </issueManagement>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.testng</groupId>
-      <artifactId>testng</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+    <developers>
+        <developer>
+            <id>headcr4sh</id>
+            <name>Benjamin P. Jung</name>
+            <email>headcr4sh@gmail.com</email>
+            <url>http://profiles.google.com/headcr4sh</url>
+            <timezone>Europe/Berlin</timezone>
+            <properties/>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
 
-  <dependencyManagement>
+    <contributors/>
+
+    <ciManagement>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/cathive/fx-credits/</url>
+    </ciManagement>
+
+    <scm>
+        <connection>scm:git:https://github.com/cathive/fx-credits.git</connection>
+        <developerConnection>scm:git:git@github.com:cathive/fx-credits.git</developerConnection>
+        <url>https://github.com/cathive/fx-credits/</url>
+        <tag>master</tag>
+    </scm>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxb2-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>schemagen</goal>
+                        </goals>
+                        <phase>generate-resources</phase>
+                        <configuration>
+                            <includes>
+                                <include>com/cathive/fx/credits/Component.java</include>
+                                <include>com/cathive/fx/credits/Credits.java</include>
+                                <include>com/cathive/fx/credits/License.java</include>
+                                <include>com/cathive/fx/credits/Person.java</include>
+                                <include>com/cathive/fx/credits/Section.java</include>
+                            </includes>
+                            <transformSchemas>
+                                <transformSchema>
+                                    <uri>http://www.cathive.com/fx/credits/</uri>
+                                    <toFile>fx-credits.xsd</toFile>
+                                </transformSchema>
+                            </transformSchemas>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>jaxb2-maven-plugin</artifactId>
+                    <version>1.5</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
     <dependencies>
-      <dependency>
-        <groupId>org.testng</groupId>
-        <artifactId>testng</artifactId>
-        <version>6.8</version>
-      </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-  </dependencyManagement>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.testng</groupId>
+                <artifactId>testng</artifactId>
+                <version>6.8</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 </project>
